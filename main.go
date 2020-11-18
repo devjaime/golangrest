@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/elliotforbes/go-fiber-tutorial/book"
+	"github.com/devjaime/golangrest/book"
 	"github.com/gofiber/fiber"
 )
 
