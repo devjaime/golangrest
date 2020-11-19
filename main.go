@@ -2,20 +2,37 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"os"
+	"strconv"
 
 	"github.com/devjaime/golangrest/database"
 	"github.com/devjaime/golangrest/product"
 	"github.com/gofiber/fiber"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mssql"
+	"github.com/joho/godotenv"
 )
 
+// use godot package to load/read the .env file and
+// return the value of the key
+func goDotEnvVariable(key string) string {
+	// load .env file
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
+
+	return os.Getenv(key)
+}
+
 var (
-	server     = "localhost"
-	port       = 1433
-	user       = "sa"
-	password   = "Password123@jkl#"
-	databaseBD = "CatalogBD"
+	server       = goDotEnvVariable("server")
+	port, errint = strconv.Atoi(goDotEnvVariable("port"))
+	user         = goDotEnvVariable("user")
+	password     = goDotEnvVariable("password")
+	databaseBD   = goDotEnvVariable("databaseBD")
 )
 
 func setupRoutes(app *fiber.App) {
@@ -48,5 +65,5 @@ func main() {
 	defer database.DBConn.Close()
 	setupRoutes(app)
 
-	app.Listen(3000)
+	app.Listen(4000)
 }

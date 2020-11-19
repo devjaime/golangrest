@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+
+  catalogdocker:
+    build: .
+    env_file:
+        - .env
+    ports:
+      - 4000:4000

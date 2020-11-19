@@ -1,0 +1,5 @@
+server= "server"
+port= "1433"
+user= "sa"
+password= "pass123"
+databaseBD= "CATALOGBD"
