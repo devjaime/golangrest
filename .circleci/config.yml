@@ -8,6 +8,6 @@ jobs:
                     - "b1:f6:75:0e:a2:3c:d0:c3:b1:63:74:18:57:25:93:b4"
             - checkout
             - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-            - run: docker build -t devjaime/catalog:$CIRCLE_SHA1 .
-            - run: docker push devjaime/catalog:$CIRCLE_SHA1
+            - run: docker build -t dockerssbjh/catalog:$CIRCLE_SHA1 .
+            - run: docker push dockerssbjh/catalog:$CIRCLE_SHA1
             - run: ssh -o StricHostKeyChecking=no root@134.209.221.129 "/bin/bash /root/docker/deploy.sh $CIRCLE_SHA1"
