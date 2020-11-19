@@ -2,7 +2,7 @@ version: "2"
 
 services:
 
-  catalogdocker:
+  catalog:
     build: .
     env_file:
         - .env
