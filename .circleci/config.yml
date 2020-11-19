@@ -10,4 +10,4 @@ jobs:
             - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
             - run: docker build -t dockerssbjh/catalog:$CIRCLE_SHA1 .
             - run: docker push dockerssbjh/catalog:$CIRCLE_SHA1
-            - run: ssh -o StricHostKeyChecking=no root@134.209.221.129 "/bin/bash /root/docker/deploy.sh $CIRCLE_SHA1"
+            - run: ssh root@134.209.221.129 "/bin/bash /root/docker/deploy.sh $CIRCLE_SHA1"
